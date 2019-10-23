@@ -1,3 +1,3 @@
 # Yuki
 
-A description of this package.
+My inter-project/reusable code for iOS projects

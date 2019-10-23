@@ -1,3 +1,3 @@
 struct Yuki {
-    var text = "Hello, World!"
+  var version = "0.1"
 }
