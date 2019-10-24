@@ -24,6 +24,17 @@ public extension UIView {
     get { return UIColor(cgColor: self.layer.borderColor!) }
     set { self.layer.borderColor = newValue.cgColor }
   }
+  
+  @discardableResult
+  func initFromNib<T : UIView>() -> T? {
+    guard let contentView = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? T else {
+      return nil
+    }
+    self.addSubview(contentView)
+    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    contentView.translatesAutoresizingMaskIntoConstraints = true
+    return contentView
+  }
 }
 
 #endif
