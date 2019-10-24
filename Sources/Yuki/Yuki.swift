@@ -1,3 +1,3 @@
 struct Yuki {
-  var version = "0.1"
+  var version = "0.1.1"
 }
