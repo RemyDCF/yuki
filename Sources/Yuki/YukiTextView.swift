@@ -12,29 +12,18 @@ import UIKit
 @available(iOS 9.0, *)
 @IBDesignable
 class YukiTextView: UITextField {
-  
-  var bottomBorder = UIView()
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
+  let padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
 
-    self.translatesAutoresizingMaskIntoConstraints = false
-    
-    bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-    bottomBorder.backgroundColor = bottomLineColor
-    addSubview(bottomBorder)
-    
-    bottomBorder.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 3).isActive = true
-    bottomBorder.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-    bottomBorder.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-    bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
+  override open func textRect(forBounds bounds: CGRect) -> CGRect {
+    return bounds.inset(by: padding)
   }
-  
-  @IBInspectable var bottomLineColor: UIColor = .gray {
-    didSet {
-      bottomBorder.backgroundColor = self.bottomLineColor
-    }
+
+  override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    return bounds.inset(by: padding)
+  }
+
+  override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+    return bounds.inset(by: padding)
   }
 }
 
